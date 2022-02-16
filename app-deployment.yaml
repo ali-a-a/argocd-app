@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-sever
+spec:
+  selector:
+    matchLabels:
+      app: simple-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: simple-server
+    spec:
+      containers:
+      - name: simple-server
+        imagePullPolicy: Never
+        image: simple-server-2:latest
+        ports:
+        - name: server-http
+          containerPort: 4041
